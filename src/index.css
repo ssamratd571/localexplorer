@@ -1,13 +1,78 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------- BUBBLES ------------------- */
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: bubble-rise 12s linear infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) scale(0.3); }
+  50%  { transform: translateY(-50vh) scale(0.6); }
+  100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+
+/* ------------------- STARS ------------------- */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 9999px;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+/* twinkle animation */
+@keyframes twinkle {
+  0%,100% { opacity: 0.1; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* animation delay custom */
+.animation-delay-\[0s\] { animation-delay: 0s; }
+.animation-delay-\[1s\] { animation-delay: 1s; }
+.animation-delay-\[2s\] { animation-delay: 2s; }
+.animation-delay-\[3s\] { animation-delay: 3s; }
+.animation-delay-\[4s\] { animation-delay: 4s; }
+.animation-delay-\[5s\] { animation-delay: 5s; }
+
+/* ------------------- TYPING ANIMATION ------------------- */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.7);
+  animation: typing 6s steps(100,end), cursor .7s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes cursor {
+  50% { border-color: transparent }
+}
+
+/* ------------------- GLOBAL ------------------- */
+html, body, #root {
+  height: 100%;
+}
+
+/* default background for pages without image */
+body {
+  @apply bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500;
+}
+
+/* input text color */
+input, textarea, select {
+  color:black;
 }
